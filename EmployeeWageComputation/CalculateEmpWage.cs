@@ -11,32 +11,32 @@ namespace EmployeeWageComputation
         // static method to perform Employee Wage Computation program
         public static void WageCompute()
         {
-            /* Uc - 3 Implementation
-             * In this branch we are adding FullTime and PartTime Employee.
-             * Computing Wage For FullTime and PartTime Employee.
+            /* Uc - 4 Implementation
+             * In this branch we are implementing Switch Case Statement..
+             * Computing Wage For Employee.
              */
             //Instance Variables.
-            int fullTime = 1;
-            int partTime = 2;
             int empWageHrs = 0;
             int empWagePrHrs = 20;
             Random random = new Random();           //Creating Object of Random Class
             int empAttendence = random.Next(0, 3); //Generating random number between 0 and 3.
-            
-            //Checking condition using if else statement.
-            if (empAttendence == fullTime)
+
+            //Checking employee Attendence using Switch Case statement.
+            switch (empAttendence)
             {
-                Console.WriteLine("Employee is Present");
-                empWageHrs = 8;
-            }
-            else if (empAttendence == partTime)
-            {
-                Console.WriteLine("Employee is Present");
-                empWageHrs = 4;
-            }
-            else
-            {
-                Console.WriteLine("Employee is not Present");
+                case 0:
+                    Console.WriteLine("Employee is not Present");
+                    break;
+                case 1:
+                    Console.WriteLine("Employee is FullTime");
+                    empWageHrs = 8;
+                    break;
+                case 2:
+                    Console.WriteLine("Employee is PartTime");
+                    empWageHrs = 4;
+                    break;
+                default:
+                    break;
             }
             int totalWage = empWagePrHrs * empWageHrs;
             Console.WriteLine("Employee total Wage: "+totalWage);
