@@ -13,6 +13,7 @@ namespace EmployeeWageComputation
         {
             //printing message on console
             Console.WriteLine("Welcome To Employee Wage Computation Program");
+            CalculateEmpWage.WageCompute();    // calling static method using class name.
             Console.ReadLine();
         }
     }
