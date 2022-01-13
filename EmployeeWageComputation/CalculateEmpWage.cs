@@ -11,21 +11,28 @@ namespace EmployeeWageComputation
         // static method to perform Employee Wage Computation program
         public static void WageCompute()
         {
-            /* Uc - 2 Implementation
-             * In this branch we are calculating Employee Wage.
+            /* Uc - 3 Implementation
+             * In this branch we are adding FullTime and PartTime Employee.
+             * Computing Wage For FullTime and PartTime Employee.
              */
             //Instance Variables.
-            int present = 1;
+            int fullTime = 1;
+            int partTime = 2;
             int empWageHrs = 0;
             int empWagePrHrs = 20;
             Random random = new Random();           //Creating Object of Random Class
-            int empAttendence = random.Next(0, 2); //Generating random number between 0 and 1.
+            int empAttendence = random.Next(0, 3); //Generating random number between 0 and 3.
             
             //Checking condition using if else statement.
-            if (empAttendence == present)
+            if (empAttendence == fullTime)
             {
                 Console.WriteLine("Employee is Present");
                 empWageHrs = 8;
+            }
+            else if (empAttendence == partTime)
+            {
+                Console.WriteLine("Employee is Present");
+                empWageHrs = 4;
             }
             else
             {
