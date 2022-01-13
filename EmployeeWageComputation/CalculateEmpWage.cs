@@ -11,13 +11,14 @@ namespace EmployeeWageComputation
         // static method to perform Employee Wage Computation program
         public static void WageCompute()
         {
-            /* Uc - 4 Implementation
-             * In this branch we are implementing Switch Case Statement..
-             * Computing Wage For Employee.
+            /* Uc - 5 Implementation
+             * In this branch .
+             * Computing Wage For a Month of Employee.
              */
             //Instance Variables.
             int empWageHrs = 0;
             int empWagePrHrs = 20;
+            int empWorkPrMonth = 20;
             Random random = new Random();           //Creating Object of Random Class
             int empAttendence = random.Next(0, 3); //Generating random number between 0 and 3.
 
@@ -35,11 +36,9 @@ namespace EmployeeWageComputation
                     Console.WriteLine("Employee is PartTime");
                     empWageHrs = 4;
                     break;
-                default:
-                    break;
             }
-            int totalWage = empWagePrHrs * empWageHrs;
-            Console.WriteLine("Employee total Wage: "+totalWage);
+            int totalWage = empWorkPrMonth * empWagePrHrs * empWageHrs;
+            Console.WriteLine("Employee total Wage for Month: "+totalWage);
         }
     }
 }
