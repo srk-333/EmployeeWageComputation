@@ -8,45 +8,48 @@ namespace EmployeeWageComputation
 {
     public class CalculateEmpWage
     {
-        // static method to perform Employee Wage Computation program
-        public static void WageCompute()
+        //Instance Variables.
+        const int FULL_TIME = 1;
+        const int PART_TIME =2;        
+        int emphrs;
+        int wagePrHrs = 20;      
+        int totalWage;      
+        // method to perform Employee Wage Computation program
+        public void WageCompute()
         {
             /* Uc - 6 Implementation
              * In this branch, Computing Wage For a Employee for a given condition
              * condition is employee total work hrs becomes 100 or 20 days for a Month 
              */
-            //Instance Variables.
-            int emphrs;
-            int wagePrHrs = 20;           
-            int totalWorkHrs= 100 ;
-            int totalWorkDay= 20;
+            //Local Variables.
+            int totalWorkHrs = 100;
+            int totalWorkDay = 20;
             int totalEmpWrkhr = 0;
-            int totalEmpwrkDay = 0;
-            Random random = new Random();    //Creating Object of Random Class
-
+            int totalEmpwrkDay = 1;
+            Random randomNum = new Random();          //Creating Object of Random Class
             //Checking condition.           
-            int i = 0;
             while (totalEmpWrkhr <= totalWorkHrs && totalEmpwrkDay <= totalWorkDay )
-            {
-                totalEmpwrkDay++;                       //incrementing Number of Day Worked.
-                int randomNum = random.Next(0, 3);     //generating random number from 0 to 2.
-                switch (randomNum)                    //passing random number into switch to get employee work hours.
+            {            
+                int empCheck = randomNum.Next(0, 3);     //generating random number from 0 to 2.
+                switch (empCheck)                    //passing random number into switch to get employee work hours.
                 { 
-                    case 0:                      
+                    case FULL_TIME:                      
                         emphrs = 8;
                         break;
-                    case 1:                       
+                    case PART_TIME:                       
                         emphrs = 4;
                         break;
                     default:
                         emphrs = 0;
                         break;
                 }
-                totalEmpWrkhr = emphrs + totalEmpWrkhr;     //Computing Total Work Hrs of Employee Day wise.
-                i++;                                       // incrementing i value to iteretate loop.
+                int empWage = emphrs * wagePrHrs;
+                Console.WriteLine("Emp wage for day{0} is: {1}", totalEmpwrkDay, empWage);
+                totalWage += empWage;
+                totalEmpWrkhr = emphrs + totalEmpWrkhr;      //Computing Total Work Hrs of Employee Day wise.
+                totalEmpwrkDay++;                           //incrementing Number of Day Worked.
             }
-            int totalWage = totalEmpWrkhr * totalWorkDay * wagePrHrs;    //Total Wage for a Month
-            Console.WriteLine("Employee total Wage: " + totalWage);
+            Console.WriteLine("\nEmployee total Wage: "+totalWage);
         }
     }
 }
