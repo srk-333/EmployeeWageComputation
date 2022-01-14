@@ -14,6 +14,7 @@ namespace EmployeeWageComputation
             //printing message on console
             Console.WriteLine("Welcome To Employee Wage Computation Program");
             CalculateEmpWage.WageCompute();    // calling static method using class name.
+            SwitchCase.PerformSwitchUse();    // calling Switch case method.
             Console.ReadLine();
         }
     }
