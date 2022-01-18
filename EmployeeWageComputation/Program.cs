@@ -12,10 +12,9 @@ namespace EmployeeWageComputation
         static void Main(string[] args)
         {
             //printing message on console
-            Console.WriteLine("Welcome To Employee Wage Computation Program");
+            Console.WriteLine("Welcome To Employee Wage Computation Program \n");
             CalculateEmpWage empWage = new CalculateEmpWage();   //creating object of class
-            empWage.WageCompute();   
-            SwitchCase.PerformSwitchUse();    // calling Switch case method.
+            empWage.WageCompute();
             Console.ReadLine();
         }
     }
