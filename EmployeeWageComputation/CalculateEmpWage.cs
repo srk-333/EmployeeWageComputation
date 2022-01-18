@@ -8,19 +8,33 @@ namespace EmployeeWageComputation
 {
     public class CalculateEmpWage
     {
-        /* Uc - 8 Implementation
+        /* Uc - 9 Implementation
          * In this branch, Computing Wage For a Employee 
-         * of multiple Companies.
+         * of multiple Companies using constructor
+         * so,that each company will have own object.
          */
         //Constant Variables.
         const int FULL_TIME = 1;
         const int PART_TIME = 2;
 
+        //Instance variables.
+        public string company;
+        public int wagePrHrs, totalWorkHrs, totalWorkDay;
+
         //static variable
         public static int emphrs;
+
+        //Constructor to set value for each object.
+        public CalculateEmpWage(string company, int wagePrHrs, int totalWorkHrs, int totalWorkDay)
+        {
+            this.company = company;
+            this.wagePrHrs = wagePrHrs;
+            this.totalWorkHrs = totalWorkHrs;
+            this.totalWorkDay = totalWorkDay;
+        }
                 
         // method to perform Employee Wage Computation program using parameters.
-        public static void WageCompute(string company,int wagePrHrs,int totalWorkHrs,int totalWorkDay)
+        public void WageCompute()
         {
             //Local Variables
             int totalWage = 0;
@@ -34,12 +48,11 @@ namespace EmployeeWageComputation
                 int empCheck = randomNum.Next(0, 3);     //generating random number from 0 to 2.
                 GetEmpHrs(empCheck);                    //calling static method to get emp work hr.
                 int empWage = emphrs * wagePrHrs;
-                Console.WriteLine("Emp wage for day{0} is: {1}", totalEmpwrkDay, empWage);
                 totalWage += empWage;
                 totalEmpWrkHr = emphrs + totalEmpWrkHr;      //Computing Total Work Hrs of Employee Day wise.
                 totalEmpwrkDay++;                           //incrementing Number of Day Worked.
             }
-            Console.WriteLine("\nEmployee of company:{0} and Total wage is:{1} ",company,totalWage);
+            Console.WriteLine("\nEmployee of company : {0} , Total wage is : {1} ",company,totalWage);
         }
 
         //Method to Get Employee work hours.
