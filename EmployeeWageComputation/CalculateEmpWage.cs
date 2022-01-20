@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
-    public class CalculateEmpWage
+    public class CalculateEmpWage : IEmpWageCompute
     {
-        /* Uc - 12 Implementation
-         * In this branch, Computing total Wage of a Company 
-         * by using List And Dicitionary.
+        /* Uc - 13 Implementation
+         * In this branch,implemented interface
+         * Stored daily Wage And Total Wage
          */
         //Constant Variables.
         const int FULL_TIME = 1;
         const int PART_TIME = 2;
-
+        public int dailyWage = 0;
         //static variable
-        public static int emphrs;
+        public static int empHrs;
        
         //Use of List and Dictionary 
         public IList<EmpWage> CompanyEmpWge = new List<EmpWage>();
@@ -48,6 +48,7 @@ namespace EmployeeWageComputation
             foreach (EmpWage empWage in this.CompanyEmpWge)
             {
                 empWage.SetTotalWage(WageCompute(empWage));
+                Console.WriteLine(empWage.toString());
             }
         }
                 
@@ -67,12 +68,13 @@ namespace EmployeeWageComputation
             {            
                 int empCheck = randomNum.Next(0, 3);     //generating random number from 0 to 2.
                 GetEmpHrs(empCheck);                    //calling static method to get Emp hrs.
-                int empWage = emphrs *emp.wagePrHrs;
-                totalWage += empWage;
-                totalEmpWrkHr = emphrs + totalEmpWrkHr;      //Computing Total Work Hrs of Employee Day wise.
+                dailyWage = empHrs *emp.wagePrHrs;
+                totalWage = totalEmpWrkHr * emp.wagePrHrs;
+                totalEmpWrkHr = empHrs + totalEmpWrkHr;      //Computing Total Work Hrs of Employee Day wise.
                 totalEmpwrkDay++;                           //incrementing Number of Day Worked.
             }
-            Console.WriteLine("\nEmployee of company : {0} , Total wage is : {1} ",emp.company,totalWage);
+            Console.WriteLine("Daily Wage:" + dailyWage);           //Daily Wage
+            Console.WriteLine("Total Wage:" + totalWage);          //Total Wage 
             return totalWage;
         }
 
@@ -82,13 +84,13 @@ namespace EmployeeWageComputation
             switch (empCheck)       //passing random number into switch to get employee work hours.
             {
                 case FULL_TIME:
-                    emphrs = 8;
+                    empHrs = 8;
                     break;
                 case PART_TIME:
-                    emphrs = 4;
+                    empHrs = 4;
                     break;
                 default:
-                    emphrs = 0;
+                    empHrs = 0;
                     break;
             }
         }
