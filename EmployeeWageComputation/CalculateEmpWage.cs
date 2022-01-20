@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,9 @@ namespace EmployeeWageComputation
 {
     public class CalculateEmpWage
     {
-        /* Uc - 9 Implementation
-         * In this branch, Computing Wage For a Employee 
-         * of multiple Companies using constructor
-         * so,that each company will have own object.
+        /* Uc - 12 Implementation
+         * In this branch, Computing total Wage of a Company 
+         * by using List And Dicitionary.
          */
         //Constant Variables.
         const int FULL_TIME = 1;
@@ -20,9 +20,10 @@ namespace EmployeeWageComputation
         //static variable
         public static int emphrs;
        
-        //fixed size Array
-        EmpWage[] CompanyRecord  = new EmpWage[5];
-        public int numOfCompany = 0;    //array index position
+        //Use of List and Dictionary 
+        public IList<EmpWage> CompanyEmpWge = new List<EmpWage>();
+        public IDictionary<string,EmpWage> employees = new Dictionary<string,EmpWage>();
+       
         /// <summary>
         /// Adds the company details in a array..
         /// </summary>
@@ -33,20 +34,20 @@ namespace EmployeeWageComputation
         public void AddCompany(string company, int wagePrHrs, int totalWorkHrs, int totalWorkDay)
         {
             //creating obj of EmpWage and passing constructor values
-            EmpWage emp = new EmpWage(company,wagePrHrs,totalWorkHrs,totalWorkDay);
-            this.CompanyRecord[this.numOfCompany] = emp;       //storing details in array with respecting index.
-            numOfCompany++;   //incrementing index value.
+            EmpWage empWage = new EmpWage(company, wagePrHrs, totalWorkHrs, totalWorkDay);
+            CompanyEmpWge.Add(empWage);       // Adding data in list
+            employees.Add(company,empWage);  // Adding data in Dictionary as key value Pair
+ 
         }
         /// <summary>
-        /// Gets the wage for each Index.
+        /// Gets the wage for each key
         /// </summary>
         public void GetWage()
         {
-            //looping to get and set total wage for each index value.
-            for (int i = 0; i < numOfCompany; i++)
+            //looping to get and set total wage for each List index
+            foreach (EmpWage empWage in this.CompanyEmpWge)
             {
-                int result = WageCompute(this.CompanyRecord[i]);  //calling method with index values and storing returning value in variable. 
-                this.CompanyRecord[i].SetTotalWage(result);      //Updating Total wage for every index value in array.
+                empWage.SetTotalWage(WageCompute(empWage));
             }
         }
                 
@@ -57,8 +58,10 @@ namespace EmployeeWageComputation
             int totalWage = 0;
             int totalEmpWrkHr = 0;
             int totalEmpwrkDay = 1;
+
             //Creating Object of Random Class
-            Random randomNum = new Random();         
+            Random randomNum = new Random();   
+            
             //Checking condition.           
             while (totalEmpWrkHr <= emp.totalWorkHrs && totalEmpwrkDay <= emp.totalWorkDay )
             {            

@@ -13,6 +13,7 @@ namespace EmployeeWageComputation
         {
             //printing message on console
             Console.WriteLine("Welcome To Employee Wage Computation Program \n");
+
             //Creating Object for each company and passing value to constructor.
             CalculateEmpWage company = new CalculateEmpWage();     
             company.AddCompany("Dmart", 30, 120, 25);

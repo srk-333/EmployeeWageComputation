@@ -11,6 +11,7 @@ namespace EmployeeWageComputation
         //Instance variables.
         public string company;
         public int wagePrHrs, totalWorkHrs, totalWorkDay,totalWage;
+
         //Constructor to set value for each object.
         public EmpWage(string company, int wagePrHrs, int totalWorkHrs, int totalWorkDay)
         {
@@ -19,6 +20,8 @@ namespace EmployeeWageComputation
             this.totalWorkHrs = totalWorkHrs;
             this.totalWorkDay = totalWorkDay;
         }
+
+        //Method to set Total Wage of a Company.
         public void SetTotalWage(int totalWage)
         {
             this.totalWage = totalWage;
