@@ -9,9 +9,9 @@ namespace EmployeeWageComputation
 {
     public class CalculateEmpWage : IEmpWageCompute
     {
-        /* Uc - 14 Implementation
+        /* Uc - 11 Implementation
          * In this branch implemented, 
-         * Get Total Wage when Queried by a company name.
+         * interface to get Emploee Wage
          */
         //Constant Variables.
         const int FULL_TIME = 1;
@@ -30,8 +30,8 @@ namespace EmployeeWageComputation
         /// <param name="company">The company.</param>
         /// <param name="wagePrHrs">The wage pr HRS.</param>
         /// <param name="totalWorkHrs">The total work HRS.</param>
-        /// <param name="totalWorkDay">The total work day.</param>
-        public void AddCompany(string company, int wagePrHrs, int totalWorkHrs, int totalWorkDay)
+        /// <param name="totalWorkDay">The total work day.</param>      
+        public  void AddCompany(string company, int wagePrHrs, int totalWorkHrs, int totalWorkDay)
         {
             //creating obj of EmpWage and passing constructor values
             EmpWage empWage = new EmpWage(company, wagePrHrs, totalWorkHrs, totalWorkDay);
